@@ -71,15 +71,15 @@ for my $query_file (@queries) {
     report("Executing: $cuffcommand");
 
     system("$cuffcommand");
-    $success++ if -e "cuffcompare_out/combined.transcripts.gtf" && ! -z "cuffcompare_out/combined.transcripts.gtf";
-    system("mv cuffcompare_out $basename\_out");
+    $success++ if -e "cuffcompare_out.combined.gtf" && ! -z "cuffcompare_out.combined.gtf";
+    #system("mv cuffcompare_out $basename\_out");
 
     #mkdir $gtf_out unless -d $gtf_out;
     #system("cp $basename\_out/transcripts.gtf $gtf_out/$basename\_transcripts.gtf");
 }
 
 
-die "Something did not work, no combined.transcripts.gtf file!" unless $success;
+die "Something did not work, no combined.gtf file!" unless $success;
 
 sub report {
     print STDERR "$_[0]\n";
