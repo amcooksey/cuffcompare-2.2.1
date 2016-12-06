@@ -9,12 +9,12 @@ use constant CUFFLINKS  => ('2.2.1' => '/cufflinks-2.2.1.Linux_x86_64/');
 report_input_stack();
 
 # Define workflow options
-my (@query_file, $annotation, $user_annotation, $version, $contained);
+my (@query_file, @query_file1, $annotation, $user_annotation, $version, $contained);
 #$soft = 1;
 $version = '2.2.1';
 
 GetOptions( "infile=s"    => \@query_file,
-	    "infile1=s"	  => \@query_file,
+	    "infile1=s"	  => \@query_file1,
 	    "G=s"         => \$annotation,
             "M=s"         => \$user_annotation,
 	    "version=s"   => \$version,
@@ -28,6 +28,10 @@ my (@queries,$success);
 
 if (@query_file) {
     push @queries, @query_file;
+}
+
+if (@query_file1) {
+    push @queries, @query_file1;
 }
 
 @queries > 1 || die "I could not find any GTF input files.\n";
