@@ -8,12 +8,13 @@ use constant CUFFLINKS  => ('2.2.1' => '/cufflinks-2.2.1.Linux_x86_64/');
 
 report_input_stack();
 
-# Define worflow options
+# Define workflow options
 my (@query_file, $annotation, $user_annotation, $version, $contained);
 #$soft = 1;
 $version = '2.2.1';
 
 GetOptions( "infile=s"    => \@query_file,
+	    "infile1=s"	  => \@query_file,
 	    "G=s"         => \$annotation,
             "M=s"         => \$user_annotation,
 	    "version=s"   => \$version,
@@ -29,7 +30,7 @@ if (@query_file) {
     push @queries, @query_file;
 }
 
-@queries > 0 || die "I could not find any GTF input files.\n";
+@queries > 1 || die "I could not find any GTF input files.\n";
 
 
 # Allow over-ride of system-level database path with user
