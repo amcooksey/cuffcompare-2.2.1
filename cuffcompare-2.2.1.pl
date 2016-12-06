@@ -14,7 +14,6 @@ my (@query_file, @query_file1, $annotation, $user_annotation, $version, $contain
 $version = '2.2.1';
 
 GetOptions( "infile=s"    => \@query_file,
-	    "infile1=s"	  => \@query_file1,
 	    "G=s"         => \$annotation,
             "M=s"         => \$user_annotation,
 	    "version=s"   => \$version,
@@ -30,9 +29,6 @@ if (@query_file) {
     push @queries, @query_file;
 }
 
-if (@query_file1) {
-    push @queries, @query_file1;
-}
 
 @queries > 1 || die "I could not find any GTF input files.\n";
 
