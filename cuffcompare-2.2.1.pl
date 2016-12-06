@@ -10,7 +10,6 @@ report_input_stack();
 
 # Define workflow options
 my (@query_file, @query_file1, $annotation, $user_annotation, $version, $contained);
-#$soft = 1;
 $version = '2.2.1';
 
 GetOptions( "infile=s"    => \@query_file,
@@ -21,7 +20,6 @@ GetOptions( "infile=s"    => \@query_file,
 	    );
 
 # more with this later, when they fix BOOLEANs
-#my $hard = 1 unless $soft;
 
 my (@queries,$success);
 
@@ -72,10 +70,6 @@ for my $query_file (@queries) {
 
     system("$cuffcommand");
     $success++ if -e "cuffcompare_out.combined.gtf" && ! -z "cuffcompare_out.combined.gtf";
-    #system("mv cuffcompare_out $basename\_out");
-
-    #mkdir $gtf_out unless -d $gtf_out;
-    #system("cp $basename\_out/transcripts.gtf $gtf_out/$basename\_transcripts.gtf");
 }
 
 
